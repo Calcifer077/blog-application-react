@@ -1,0 +1,10 @@
+Backend/node_modules
+Backend/config.env
+Backend/package-lock.json
+Frontend/node_modules
+Frontend/dist
+Frontend/dist-ssr
+Frontend/*.local
+Frontend/config.env
+Frontend/package-lock.json
+TODO.txt
