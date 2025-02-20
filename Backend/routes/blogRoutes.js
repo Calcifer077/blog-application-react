@@ -3,6 +3,8 @@ const blogController = require('../controllers/blogController');
 const authController = require('../controllers/authController');
 const router = express.Router();
 
+router.use('/search', blogController.searchBlog);
+
 router
   .route('/')
   .get(blogController.getAllBlogs)
