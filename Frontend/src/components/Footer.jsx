@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Footer() {
   const location = useLocation();
 
-  const [position, setPosition] = useState("");
+  const [position, setPosition] = useState('');
 
   useEffect(
     function () {
-      if (location.pathname === "/") {
-        setPosition("fixed");
+      if (location.pathname === '/' || location.pathname === '/search') {
+        setPosition('fixed');
       } else {
-        setPosition("");
+        setPosition('');
       }
     },
-    [location.pathname]
+    [location.pathname],
   );
 
   return (
     <div
-      className={`w-full ${position} bottom-0 h-32 flex justify-between items-center px-6 bg-gray-800 text-white`}
+      className={`w-full ${position} bottom-0 flex h-32 items-center justify-between bg-gray-800 px-6 text-white`}
     >
       <div className="text-lg font-semibold">Blog Application</div>
       <div className="">

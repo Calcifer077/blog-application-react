@@ -51,13 +51,14 @@ function LogIn() {
         toast.error('Error during login');
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err.message || 'Error during login');
     }
   }
 
   function onError(err) {
-    console.error(err);
+    toast.error(err.message || 'Something went wrong. Please try again!');
+    // console.error(err);
   }
 
   return (

@@ -29,7 +29,6 @@ function CreateNewBlog() {
       toast.error(
         err.message || 'An unexpected error occured. Please try again!',
       );
-      console.error(err);
     },
   });
 
@@ -40,7 +39,7 @@ function CreateNewBlog() {
   }
 
   function onError(err) {
-    console.log(err);
+    toast.error(err.message || 'Something went wrond. Please try again!');
   }
 
   return (
@@ -60,6 +59,7 @@ function CreateNewBlog() {
               id="title"
               placeholder="Title of your Blog"
               className="w-full rounded-lg border-2 border-gray-300 p-3 shadow-sm transition-all duration-200 focus:border-blue-500 focus:ring-2 focus:shadow-lg focus:ring-blue-500 focus:outline-none"
+              disabled={isLoading}
               {...register('title', { required: 'Title is required!' })}
             />
           </FormLabel>
@@ -75,6 +75,7 @@ function CreateNewBlog() {
               id="content"
               placeholder="Write your blog content here..."
               className="w-full resize-none rounded-lg border-2 border-gray-300 p-3 shadow-sm transition-all duration-200 focus:border-blue-500 focus:ring-2 focus:shadow-lg focus:ring-blue-500 focus:outline-none"
+              disabled={isLoading}
               rows={6}
               {...register('content', { required: 'Content is required' })}
             />
@@ -89,7 +90,7 @@ function CreateNewBlog() {
           >
             Submit Blog
           </button> */}
-          <Button whom="submit" type="submit">
+          <Button whom="submit" type="submit" disabled={isLoading}>
             Submit Blog
           </Button>
         </div>

@@ -67,7 +67,7 @@ function CreateNewBlog() {
         err.message || 'An unexpected error occured. Please try again!',
       );
 
-      console.log(err);
+      // console.log(err);
     },
   });
 
@@ -84,7 +84,7 @@ function CreateNewBlog() {
       }, 2000);
     },
     onError: (err) => {
-      console.log(err);
+      // console.log(err);
       toast.error(
         err.message || 'An unexpected error occured. Please try again!',
       );
@@ -96,7 +96,7 @@ function CreateNewBlog() {
   }, []);
 
   function onSubmit(data) {
-    console.log(id, token, data);
+    // console.log(id, token, data);
     updateBlog({
       blogData: {
         title: data.title,
@@ -108,12 +108,13 @@ function CreateNewBlog() {
   }
 
   function onError(err) {
-    console.log(err);
+    // console.log(err);
+    toast.error(err.message || 'Something went wrong. Please try again!');
   }
 
   function handleClick() {
-    console.log(token, id);
-    console.log('Button clicked');
+    // console.log(token, id);
+    // console.log('Button clicked');
     deleteBlog({ id, token });
   }
 
