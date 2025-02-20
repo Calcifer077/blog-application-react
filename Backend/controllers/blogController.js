@@ -111,3 +111,52 @@ exports.deleteBlog = catchAsync(async (req, res, next) => {
     data: deletedBlog,
   });
 });
+
+exports.searchBlog = catchAsync(async (req, res, next) => {
+  console.log(req.query);
+  if (req.query.t) {
+    return searchBlogBasedOnTitle(req, res, next);
+  }
+
+  if (req.query.c) {
+    return searchBlogBasedOnContent(req, res, next);
+  }
+  res.status(200).json({
+    status: 'success',
+    data: null,
+  });
+});
+
+const searchBlogBasedOnTitle = catchAsync(async (req, res, next) => {
+  const query = req.query.t.toLowerCase().replaceAll('_', ' ');
+  console.log(query);
+
+  const documents = await Blog.find();
+
+  const resultDocuments = documents.filter((curr) =>
+    curr.title.toLowerCase().includes(query),
+  );
+
+  res.status(200).json({
+    status: 'success',
+    length: resultDocuments.length,
+    data: resultDocuments,
+  });
+});
+
+const searchBlogBasedOnContent = catchAsync(async (req, res, next) => {
+  const query = req.query.c.toLowerCase().replaceAll('_', ' ');
+
+  const documents = await Blog.find();
+
+  // Only include those documents which have 'query' in their content.
+  const resultDocuments = documents.filter((curr) =>
+    curr.content.toLowerCase().includes(query),
+  );
+
+  res.status(200).json({
+    status: 'success',
+    lenght: resultDocuments.length,
+    data: resultDocuments,
+  });
+});
