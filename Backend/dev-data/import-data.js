@@ -23,13 +23,13 @@ mongoose
 // mongoose.connect(DB).then(() => console.log('DB connection successfull'));
 
 // READ JSON FILE
-const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
+// const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 const blogs = JSON.parse(fs.readFileSync(`${__dirname}/blogs.json`, 'utf-8'));
 
 // IMPORT DATA INTO DB
 const importData = async () => {
   try {
-    await User.create(users, { validateBeforeSave: false });
+    // await User.create(users, { validateBeforeSave: false });
     await Blog.create(blogs);
     console.log('Data successfully loaded!');
   } catch (err) {
@@ -42,8 +42,8 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     // will delete all of the documents in a certain collection
-    await User.deleteMany();
-    // await Blog.deleteMany();
+    // await User.deleteMany();
+    await Blog.deleteMany();
     console.log('Data successfully deleted');
   } catch (err) {
     console.log(err);
