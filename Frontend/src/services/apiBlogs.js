@@ -87,7 +87,6 @@ const updateBlogById = async (data, id, token) => {
 
 const deleteBlogById = async (id, token) => {
   try {
-    console.log(token);
     if (!token) {
       throw new Error('You are not logged in. Please log in.');
     }
@@ -106,10 +105,46 @@ const deleteBlogById = async (id, token) => {
   }
 };
 
+const searchBlog = async (searchQuery, type) => {
+  try {
+    if (!searchQuery || !type) {
+      return [];
+    }
+
+    searchQuery = searchQuery.replace(' ', '_');
+
+    // Search based on title
+    if (type === 'title') {
+      const res = await axiosInstance.get(
+        `/api/v1/blogs/search?t=${searchQuery}`,
+      );
+
+      if (String(res.data.status) === 'success') {
+        return res.data.data;
+      }
+    }
+
+    // Search based on content
+    if (type === 'content') {
+      const res = await axiosInstance.get(
+        `/api/v1/blogs/search?c=${searchQuery}`,
+      );
+
+      if (String(res.data.status) === 'success') {
+        return res.data.data;
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
 export default {
   getBlogs,
   getBlogById,
   deleteBlogById,
   updateBlogById,
   createBlog,
+  searchBlog,
 };
