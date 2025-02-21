@@ -19,11 +19,11 @@ app.use(cookieParser());
 // );
 
 const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:5173/createNewBlog',
-  'http://localhost:5173/search',
-  'http://localhost:5173/signup',
-  'http://localhost:5173/login',
+  'https://blog-application-react-flax.vercel.app/',
+  'https://blog-application-react-flax.vercel.app/createNewBlog',
+  'https://blog-application-react-flax.vercel.app/search',
+  'https://blog-application-react-flax.vercel.app/signup',
+  'https://blog-application-react-flax.vercel.app/login',
 ];
 
 app.use(

@@ -7,23 +7,23 @@ const Blog = require('../models/blogModel');
 dotenv.config({ path: './config.env' });
 
 // When using local database.
-mongoose
-  .connect(process.env.DATABASE_LOCAL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('DB connection successful'));
+// mongoose
+//   .connect(process.env.DATABASE_LOCAL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log('DB connection successful'));
 
 // When using ATLAS
-// const DB = process.env.DATABASE_ATLAS.replace(
-//   '<db_password>',
-//   process.env.DATABASE_PASSWORD_ATLAS,
-// );
+const DB = process.env.DATABASE_ATLAS.replace(
+  '<db_password>',
+  process.env.DATABASE_PASSWORD_ATLAS,
+);
 
-// mongoose.connect(DB).then(() => console.log('DB connection successfull'));
+mongoose.connect(DB).then(() => console.log('DB connection successfull'));
 
 // READ JSON FILE
-// const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
+const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 const blogs = JSON.parse(fs.readFileSync(`${__dirname}/blogs.json`, 'utf-8'));
 
 // IMPORT DATA INTO DB

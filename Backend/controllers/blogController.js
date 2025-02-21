@@ -6,6 +6,10 @@ const AppError = require('../utils/appError');
 exports.getAllBlogs = catchAsync(async (req, res, next) => {
   const blogs = await Blog.find();
 
+  console.log(req.protocol);
+  console.log(req.hostname);
+  console.log(req.originalUrl);
+
   console.log('route for all blogs hit');
   res.status(200).json({
     status: 'success',
