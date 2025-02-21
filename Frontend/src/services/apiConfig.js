@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:3002';
+const API_URL = 'https://blog-application-react-4zd1.onrender.com/';
 
 // Below is used so that backend can set cookies properly.
 const axiosInstance = axios.create({
