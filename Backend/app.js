@@ -19,11 +19,11 @@ app.use(cookieParser());
 // );
 
 const allowedOrigins = [
-  'https://blog-application-react-flax.vercel.app/',
-  'https://blog-application-react-flax.vercel.app/createNewBlog',
-  'https://blog-application-react-flax.vercel.app/search',
-  'https://blog-application-react-flax.vercel.app/signup',
-  'https://blog-application-react-flax.vercel.app/login',
+  'https://blog-application-react-delta.vercel.app/',
+  'https://blog-application-react-delta.vercel.app/createNewBlog',
+  'https://blog-application-react-delta.vercel.app/search',
+  'https://blog-application-react-delta.vercel.app/signup',
+  'https://blog-application-react-delta.vercel.app/login',
 ];
 
 app.use(
