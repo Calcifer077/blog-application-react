@@ -9,17 +9,8 @@ const app = express();
 // Below middleware is used to parse the data from the cookie
 app.use(cookieParser());
 
-// Below is used so that our server can set cookies properly for frontend
-// app.use(
-//   cors({
-//     origin: 'http://127.0.0.1:5173', // our frontend url
-//     methods: 'GET,POST,PUT,DELETE', // allow all methods
-//     credentials: true,
-//   }),
-// );
-
 const allowedOrigins = [
-  'https://blog-application-react-delta.vercel.app/',
+  'https://blog-application-react-delta.vercel.app',
   'https://blog-application-react-delta.vercel.app/createNewBlog',
   'https://blog-application-react-delta.vercel.app/search',
   'https://blog-application-react-delta.vercel.app/signup',
@@ -30,7 +21,7 @@ app.use(
   cors({
     origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: 'Content-Type,Authorization',
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   }),
 );
