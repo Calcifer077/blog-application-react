@@ -4,7 +4,6 @@ const getBlogs = async () => {
   try {
     const res = await axiosInstance.get(`/api/v1/blogs`);
 
-    console.log(res);
     if (String(res.data.status) === 'success') {
       return res.data.data.blogs;
     }
@@ -20,7 +19,6 @@ const getBlogById = async ({ id }) => {
   try {
     const res = await axiosInstance.get(`/api/v1/blogs/:${id}`);
 
-    console.log(res.data.blog);
     if (res.data.status === 'success') {
       return res.data.blog;
     }
@@ -95,7 +93,6 @@ const deleteBlogById = async (id, token) => {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    console.log(res.data);
     if (String(res.data.status) === 'success') {
       return res.data;
     }

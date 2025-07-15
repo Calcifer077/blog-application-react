@@ -43,9 +43,8 @@ function CreateNewBlog() {
     },
     onError: (err) => {
       toast.error(
-        err.message || 'An unexpected error occured. Please try again',
+        `${err.status === 404 ? 'You are not authorized to perform this action' : '${err.message}'}`,
       );
-      console.err(err);
     },
   });
 
@@ -66,8 +65,6 @@ function CreateNewBlog() {
       toast.error(
         err.message || 'An unexpected error occured. Please try again!',
       );
-
-      // console.log(err);
     },
   });
 
@@ -113,8 +110,6 @@ function CreateNewBlog() {
   }
 
   function handleClick() {
-    // console.log(token, id);
-    // console.log('Button clicked');
     deleteBlog({ id, token });
   }
 

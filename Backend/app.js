@@ -9,13 +9,7 @@ const app = express();
 // Below middleware is used to parse the data from the cookie
 app.use(cookieParser());
 
-const allowedOrigins = [
-  'https://blog-application-react-delta.vercel.app',
-  'https://blog-application-react-delta.vercel.app/createNewBlog',
-  'https://blog-application-react-delta.vercel.app/search',
-  'https://blog-application-react-delta.vercel.app/signup',
-  'https://blog-application-react-delta.vercel.app/login',
-];
+const allowedOrigins = ['https://blog-application-react-delta.vercel.app'];
 
 app.use(
   cors({

@@ -8,7 +8,6 @@ const login = async (data) => {
       password,
     });
 
-    console.log(res);
     if (String(res.data.message) === 'success') {
       return res.data;
     } else {

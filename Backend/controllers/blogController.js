@@ -6,11 +6,6 @@ const AppError = require('../utils/appError');
 exports.getAllBlogs = catchAsync(async (req, res, next) => {
   const blogs = await Blog.find();
 
-  console.log(req.protocol);
-  console.log(req.hostname);
-  console.log(req.originalUrl);
-
-  console.log('route for all blogs hit');
   res.status(200).json({
     status: 'success',
     data: {
@@ -20,8 +15,6 @@ exports.getAllBlogs = catchAsync(async (req, res, next) => {
 });
 
 exports.getBlog = catchAsync(async (req, res, next) => {
-  console.log('route for a blog hit');
-
   const blog = await Blog.findById(req.params.id.slice(1));
 
   if (!req.user._id.equals(blog.user)) {
@@ -101,8 +94,6 @@ exports.updateBlog = catchAsync(async (req, res, next) => {
 
 exports.deleteBlog = catchAsync(async (req, res, next) => {
   const blog = await Blog.findById(req.params.id.slice(1));
-  console.log(blog);
-  console.log(req.user);
 
   if (!req.user._id.equals(blog.user)) {
     return next(new AppError(`You can't delete this blog`, 404));
@@ -117,7 +108,6 @@ exports.deleteBlog = catchAsync(async (req, res, next) => {
 });
 
 exports.searchBlog = catchAsync(async (req, res, next) => {
-  console.log(req.query);
   if (req.query.t) {
     return searchBlogBasedOnTitle(req, res, next);
   }
@@ -133,7 +123,6 @@ exports.searchBlog = catchAsync(async (req, res, next) => {
 
 const searchBlogBasedOnTitle = catchAsync(async (req, res, next) => {
   const query = req.query.t.toLowerCase().replaceAll('_', ' ');
-  console.log(query);
 
   const documents = await Blog.find();
 

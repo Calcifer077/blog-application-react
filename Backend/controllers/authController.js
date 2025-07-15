@@ -26,7 +26,6 @@ const createSendToken = (user, statusCode, res) => {
     partitioned: true,
   };
 
-  console.log(token);
   res.cookie('jwt', token, cookieOptions);
 
   // 3. Reset user password for security
@@ -99,10 +98,6 @@ exports.protect = catchAsync(async (req, res, next) => {
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
-
-  // console.log(req.headers.authorization);
-
-  // console.log(token);
 
   // 2. Check if token is present
   if (!token || token === String(null)) {
