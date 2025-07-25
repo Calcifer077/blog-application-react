@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Button({ children, to, whom, type, onClick }) {
   const base =
-    'bg-blue-500 p-4 rounded-xl cursor-pointer hover:bg-blue-200 hover:font-bold duration-200 text-center';
+    "bg-blue-500 p-4 rounded-xl cursor-pointer hover:bg-blue-200 hover:font-bold duration-200 text-center";
 
   const styles = {
-    navbar: base + ' w-30',
+    navbar: base + " w-30 h-15",
     form:
       base +
-      ' w-full hover:bg-blue-700 hover:font-bold text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all',
+      " w-full hover:bg-blue-700 hover:font-bold text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all",
     submit:
       base +
-      ' w-full hover:bg-blue-700 hover:font-bold text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all',
+      " w-full hover:bg-blue-700 hover:font-bold text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all",
   };
 
   // Handle click event if onClick is provided
@@ -37,7 +37,7 @@ function Button({ children, to, whom, type, onClick }) {
   return (
     <button
       className={styles[whom]}
-      type={type === 'submit' ? 'submit' : 'button'}
+      type={type === "submit" ? "submit" : "button"}
       onClick={onClick}
     >
       {children}
